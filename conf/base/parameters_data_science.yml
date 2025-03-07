@@ -1,0 +1,31 @@
+model_options:
+  test_size: 0.2
+  random_state: 3
+  features:
+  - age
+  - income
+  - employment_type
+  - marital_status
+  - time_spent_on_platform
+  - number_of_sessions
+  - fields_filled_percentage
+  - previous_year_filing
+  - device_type
+  - referral_source
+
+  target: completed_filing
+
+model_parameters:
+    categorical_features:
+      - employment_type
+      - marital_status
+      - device_type
+      - referral_source
+
+    numerical_features:
+      - age
+      - income
+      - time_spent_on_platform
+      - number_of_sessions
+      - fields_filled_percentage
+      - previous_year_filing

@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  ml_pipeline:
+    build: .
+    container_name: kedro-pipeline
+    command: ["kedro", "run"]
+    volumes:
+      - .:/app
+
+  visulize_pipeline:
+    build: .
+    container_name: kedro-viz
+    command: ["kedro", "viz", "--host", "0.0.0.0"]
+    volumes:
+      - .:/app
+    ports:
+      - "4141:4141"
+
+  api:
+    build: .
+    container_name: fastapi-service
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: ["uvicorn", "--app-dir", "src/api", "main:app", "--host", "0.0.0.0", "--port", "8000"]

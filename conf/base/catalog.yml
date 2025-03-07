@@ -1,0 +1,31 @@
+dataset:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/dataset.csv
+
+train_dataset:
+  type: pandas.CSVDataset
+  filepath: data/04_feature/train_dataset.csv
+
+infer_dataset:
+  type: pandas.CSVDataset
+  filepath: data/04_feature/infer_dataset.csv
+
+model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/model.pickle
+  versioned: true
+
+diagram:
+  type: plotly.PlotlyDataset
+  filepath: data/08_reporting/diagram.json
+  versioned: true
+  plotly_args:
+    type: line
+    fig:
+      x: age
+      y: error
+      orientation: h
+    layout:
+      xaxis_title: Age
+      yaxis_title: Error Percentage
+      title: Error percentage by age
